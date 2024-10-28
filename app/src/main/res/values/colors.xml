@@ -5,4 +5,5 @@
     <color name="background">#A7C7E7</color>
     <color name="appOrange">#FFA726</color>
     <color name="appGreen">#4CAF50</color>
+    <color name="text">#333333</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.yfl
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -57,14 +58,18 @@ class MainActivity : AppCompatActivity() {
         val username = usernameInput.text.toString().trim()
         val password = passwordInput.text.toString().trim()
 
+        // Ignore spaces in the password
         val processedPassword = password.replace("\\s".toRegex(), "")
 
         if (username == "admin" && processedPassword == "123") {
-            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, QuizzTopics::class.java)
+            startActivity(intent)
+            finish()
         } else {
             showErrorDialog("Invalid username or password.")
         }
     }
+
 
     private fun showErrorDialog(message: String) {
         AlertDialog.Builder(this)
