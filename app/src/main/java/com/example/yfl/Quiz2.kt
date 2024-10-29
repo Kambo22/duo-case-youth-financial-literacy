@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.view.animation.AnimationUtils
 import android.widget.Button
 
-class Quiz1 : AppCompatActivity() {
+class Quiz2 : AppCompatActivity() {
 
     private lateinit var loadingBar: View
     private lateinit var button1R: Button
@@ -21,7 +21,7 @@ class Quiz1 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz1)
+        setContentView(R.layout.activity_quiz2)
 
         val floatAnimation = AnimationUtils.loadAnimation(this, R.anim.float_animation)
 
@@ -35,7 +35,7 @@ class Quiz1 : AppCompatActivity() {
         val nextButton = findViewById<View>(R.id.button4New)
 
         nextButton.setOnClickListener {
-            val intent = Intent(this, Quiz2::class.java)
+            val intent = Intent(this, test::class.java)
             startActivity(intent)
         }
 
@@ -56,11 +56,11 @@ class Quiz1 : AppCompatActivity() {
 
         // Set onClickListeners for buttons
         button1R.setOnClickListener {
-            handleAnswerSelection(true)
+            handleAnswerSelection(false)
         }
 
         button2W.setOnClickListener {
-            handleAnswerSelection(false)
+            handleAnswerSelection(true)
         }
 
         button3W.setOnClickListener {
@@ -70,8 +70,8 @@ class Quiz1 : AppCompatActivity() {
 
     private fun handleAnswerSelection(isCorrect: Boolean) {
         // Change the background of all buttons
-        button1R.setBackgroundResource(R.drawable.rightans) // Correct answer button background
-        button2W.setBackgroundResource(R.drawable.wrongans) // Wrong answer button background
+        button1R.setBackgroundResource(R.drawable.wrongans) // Correct answer button background
+        button2W.setBackgroundResource(R.drawable.rightans) // Wrong answer button background
         button3W.setBackgroundResource(R.drawable.wrongans) // Wrong answer button background
 
         // Change the background of the question view based on the selection
