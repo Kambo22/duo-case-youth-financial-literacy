@@ -9,4 +9,9 @@ object QuizTracker {
     fun incrementWrongAnswers() {
         wrongAnswers++
     }
+
+    fun resetCounters() {
+        solvedQuizzes = 0
+        wrongAnswers = 0
+    }
 }

@@ -12,6 +12,7 @@ import android.media.MediaPlayer
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import android.os.Handler
+import android.widget.ImageButton
 import kotlin.random.Random
 
 class Quiz1 : AppCompatActivity() {
@@ -54,6 +55,17 @@ class Quiz1 : AppCompatActivity() {
 
         // Set the first question
         setQuestion()
+
+        val returnButton = findViewById<ImageButton>(R.id.returnBTN)
+        returnButton.setOnClickListener {
+            // Reset counters
+            QuizTracker.resetCounters() // Add this method in QuizTracker class
+
+            // Navigate to the home page
+            val intent = Intent(this, SavingTIps::class.java) // Replace HomeActivity with your actual home page class
+            startActivity(intent)
+            finish() // Optionally finish the current activity
+        }
 
         // Button listeners
         button1.setOnClickListener { handleAnswerClick(0) }
@@ -117,6 +129,13 @@ class Quiz1 : AppCompatActivity() {
 
             // Update loading bar width
             updateLoadingBar()
+
+            // Change button text to "Proceed to the next question" or "See the Results"
+            if (QuizTracker.solvedQuizzes >= 6) {
+                button4new.text = "See the Results"
+            } else {
+                button4new.text = "Proceed to the next question"
+            }
         } else {
             questionBox.setBackgroundResource(R.drawable.questionwrong)
             wrongSound.start()
@@ -126,6 +145,8 @@ class Quiz1 : AppCompatActivity() {
                 incorrectQuestions.add(currentQuestionIndex)
             }
 
+            // Change button text to "Try Again"
+            button4new.text = "Try Again"
         }
 
         // Lock buttons
@@ -141,6 +162,8 @@ class Quiz1 : AppCompatActivity() {
             }, 1000) // 1 second delay for button4new
         }, 2000) // 2 seconds delay for hiding the GIF
     }
+
+
 
 
     private fun updateButtonBackgrounds(correctIndex: Int, selectedIndex: Int) {
