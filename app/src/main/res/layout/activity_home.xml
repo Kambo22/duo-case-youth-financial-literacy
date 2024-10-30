@@ -1,0 +1,226 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A7C7E7"
+    android:padding="16dp">
+
+    <!-- Logo at the Top Centered -->
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="179dp"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="App Logo"
+        android:src="@drawable/logo" />
+
+    <!-- Home Title Text -->
+    <TextView
+        android:id="@+id/homeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Home"
+        android:textColor="#333333"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <!-- Level and Quizzes Done Cards Side by Side -->
+    <LinearLayout
+        android:id="@+id/levelContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@id/homeTitle"
+        android:layout_marginTop="16dp">
+
+        <!-- Level Card -->
+        <LinearLayout
+            android:layout_width="24dp"
+            android:layout_height="162dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_card_green"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/levelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Level"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/xpText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/100 XP"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Quizzes Done Card -->
+        <LinearLayout
+            android:layout_width="5dp"
+            android:layout_height="124dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_card_orange"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/quizzesDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quizzes done today:"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Daily Goals Section with Goals in a Grid -->
+
+    <!-- Solve a Quiz Button -->
+
+    <LinearLayout
+        android:layout_width="395dp"
+        android:layout_height="214dp"
+        android:layout_below="@id/levelContainer"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_card_green"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Daily Goals"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Grid of Goals -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Goal Card 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="104dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_card_orange"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Solve 3 quizzes"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2/3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Goal Card 2 -->
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="129dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edges_lgreen"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Make less than 5 mistakes"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5/5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Goal Card 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_card_red"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Solve one topic"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/solveQuizButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/levelContainer"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_card_red"
+        android:layout_marginTop="277dp"
+        android:backgroundTint="#FFA726"
+        android:text="Solve a Quiz!"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</RelativeLayout>
