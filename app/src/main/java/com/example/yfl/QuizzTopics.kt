@@ -28,6 +28,13 @@ class QuizzTopics : AppCompatActivity() {
         val topic1 = findViewById<View>(R.id.Topic1)
         val topic2 = findViewById<View>(R.id.Topic2)
 
+        val returnButton = findViewById<View>(R.id.returnBTN)
+
+        returnButton.setOnClickListener {
+            val intent = Intent(this, SavingTIps::class.java)
+            startActivity(intent)
+        }
+
         topic1.setOnClickListener {
             val intent = Intent(this, SavingTIps::class.java)
             startActivity(intent)

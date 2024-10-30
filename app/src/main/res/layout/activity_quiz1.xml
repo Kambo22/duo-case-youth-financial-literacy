@@ -101,7 +101,7 @@
             <View
                 android:id="@+id/Question1"
                 android:layout_marginTop="20dp"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="230dp"
                 app:layout_constraintDimensionRatio="1:1"
                 android:background="@drawable/question"
@@ -114,11 +114,12 @@
             <!-- Inside Text -->
             <TextView
                 android:id="@+id/QuestionDesc"
-                android:layout_width="wrap_content"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:text="Question Desc"
                 android:textSize="33sp"
                 android:textColor="@color/text"
+                android:gravity="center"
                 android:layout_marginBottom="100dp"
                 app:layout_constraintTop_toTopOf="@id/Question1"
                 app:layout_constraintBottom_toBottomOf="@id/Question1"
@@ -128,7 +129,7 @@
             <!-- Placeholder Text Inside the View -->
             <TextView
                 android:id="@+id/QuestionAns"
-                android:layout_width="wrap_content"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:text="Placeholder Text"
                 android:textSize="20sp"
@@ -153,7 +154,7 @@
                 <!-- Button 1 -->
                 <Button
                     android:id="@+id/button1"
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="A"
                     android:background="@drawable/answer_button"
@@ -166,7 +167,7 @@
                 <!-- Button 2 -->
                 <Button
                     android:id="@+id/button2"
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="B"
                     android:background="@drawable/answer_button"
@@ -179,7 +180,7 @@
                 <!-- Button 3 -->
                 <Button
                     android:id="@+id/button3"
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="C"
                     android:background="@drawable/answer_button"

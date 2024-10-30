@@ -23,10 +23,18 @@ class SavingTIps : AppCompatActivity() {
 
         val btn = findViewById<View>(R.id.topicButton)
 
+        val returnButton = findViewById<View>(R.id.returnBTN)
+
+        returnButton.setOnClickListener {
+            val intent = Intent(this, QuizzTopics::class.java)
+            startActivity(intent)
+        }
+
         btn.setOnClickListener {
             val intent = Intent(this, Quiz1::class.java)
             startActivity(intent)
         }
+
 
     }
 }

@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import android.os.Handler
 import android.widget.ImageButton
 import kotlin.random.Random
+import androidx.appcompat.app.AlertDialog
 
 class Quiz1 : AppCompatActivity() {
 
@@ -56,15 +57,29 @@ class Quiz1 : AppCompatActivity() {
         // Set the first question
         setQuestion()
 
+        // Set up return button listener
         val returnButton = findViewById<ImageButton>(R.id.returnBTN)
         returnButton.setOnClickListener {
-            // Reset counters
-            QuizTracker.resetCounters() // Add this method in QuizTracker class
+            // Create an AlertDialog
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Confirm Exit")
+                .setMessage("Are you sure you want to leave the quiz?")
+                .setPositiveButton("Yes") { dialog, _ ->
+                    // Reset counters
+                    QuizTracker.resetCounters() // Add this method in QuizTracker class
 
-            // Navigate to the home page
-            val intent = Intent(this, SavingTIps::class.java) // Replace HomeActivity with your actual home page class
-            startActivity(intent)
-            finish() // Optionally finish the current activity
+                    // Navigate to the home page
+                    val intent = Intent(this, SavingTIps::class.java) // Replace HomeActivity with your actual home page class
+                    startActivity(intent)
+                    finish() // Optionally finish the current activity
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss() // Just close the dialog
+                }
+
+            // Show the dialog
+            builder.create().show()
         }
 
         // Button listeners
@@ -104,7 +119,7 @@ class Quiz1 : AppCompatActivity() {
 
         // Calculate the new width based on the number of correct answers
         val loadingBarWidth = 64 + (QuizTracker.solvedQuizzes * (256 / 6)) // Increment width proportionally
-        val cappedWidth = loadingBarWidth.coerceIn(64, 320) // Ensure it doesn't go below 64dp or above 320dp
+        val cappedWidth = loadingBarWidth.coerceIn(64, 290) // Ensure it doesn't go below 64dp or above 320dp
 
         // Set the new width
         val newWidthInPixels = (cappedWidth * density).toInt()

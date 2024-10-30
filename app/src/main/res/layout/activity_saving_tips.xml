@@ -62,7 +62,7 @@
 
             <!-- Image Button aligned to the start -->
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/returnBTN"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:contentDescription="Image Button Placeholder"
@@ -79,16 +79,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/topicSection1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="350dp"
             app:layout_constraintTop_toBottomOf="@id/logoHeadlineSection"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="120dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp">
 
             <!-- Square Container -->
             <View
                 android:id="@+id/Topic1"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_marginTop="30dp"
                 android:layout_height="200dp"
                 app:layout_constraintDimensionRatio="1:1"
@@ -102,7 +102,7 @@
             <!-- Inside Text -->
             <TextView
                 android:id="@+id/insideText1"
-                android:layout_width="wrap_content"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:text="Learn the basics of saving, including key practices, effective methods, and useful tools. Discover how to create a savings plan, set achievable goals, and track your progress over time."
                 android:textSize="18sp"
