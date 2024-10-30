@@ -1,5 +1,6 @@
 package com.example.yfl
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import java.io.InputStreamReader
 import android.media.MediaPlayer
-
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import android.os.Handler
+import kotlin.random.Random
 
 class Quiz1 : AppCompatActivity() {
 
@@ -19,15 +23,20 @@ class Quiz1 : AppCompatActivity() {
     private lateinit var button2: Button
     private lateinit var button3: Button
     private lateinit var questionBox: View
-    private lateinit var button4new: Button // Added to reference the new button
+    private lateinit var button4new: Button
+    private lateinit var resultGif: ImageView
+    private var loadingBarWidth = 64
 
     private var currentQuestionIndex = 0
     private lateinit var quizList: List<Question>
+    private var incorrectQuestions = mutableListOf<Int>() // List to track incorrect questions
+
+    private val correctGifs = listOf(R.drawable.correct1, R.drawable.correct2, R.drawable.correct3)
+    private val wrongGifs = listOf(R.drawable.wrong1, R.drawable.wrong2, R.drawable.wrong3)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz1)
-
 
         correctSound = MediaPlayer.create(this, R.raw.kaching)
         wrongSound = MediaPlayer.create(this, R.raw.wrong)
@@ -37,7 +46,8 @@ class Quiz1 : AppCompatActivity() {
         button2 = findViewById(R.id.button2)
         button3 = findViewById(R.id.button3)
         questionBox = findViewById(R.id.Question1)
-        button4new = findViewById(R.id.button4New) // Initialize the new button
+        button4new = findViewById(R.id.button4New)
+        resultGif = findViewById(R.id.questionGif) // Initialize the new button
 
         // Load JSON data
         loadQuizData()
@@ -59,7 +69,7 @@ class Quiz1 : AppCompatActivity() {
         val reader = InputStreamReader(inputStream)
         val gson = Gson()
         val quiz = gson.fromJson(reader, Quiz::class.java) // Deserialize to Quiz class
-        quizList = quiz.quiz // Assign the list of questions to quizList
+        quizList = quiz.quiz.shuffled() // Shuffle the list of questions
     }
 
     private fun setQuestion() {
@@ -75,33 +85,80 @@ class Quiz1 : AppCompatActivity() {
         resetButtonStates()
     }
 
+    private fun updateLoadingBar() {
+        // Convert dp to pixels
+        val density = resources.displayMetrics.density
+        val loadingBar = findViewById<View>(R.id.loadingbar)
+
+        // Calculate the new width based on the number of correct answers
+        val loadingBarWidth = 64 + (QuizTracker.solvedQuizzes * (256 / 6)) // Increment width proportionally
+        val cappedWidth = loadingBarWidth.coerceIn(64, 320) // Ensure it doesn't go below 64dp or above 320dp
+
+        // Set the new width
+        val newWidthInPixels = (cappedWidth * density).toInt()
+        val layoutParams = loadingBar.layoutParams
+        layoutParams.width = newWidthInPixels
+        loadingBar.layoutParams = layoutParams
+    }
+
     private fun handleAnswerClick(selectedIndex: Int) {
         val correctIndex = quizList[currentQuestionIndex].answers.indexOfFirst { it.isCorrect }
 
-        // Change backgrounds for all buttons
-        val buttons = listOf(button1, button2, button3)
-        buttons.forEachIndexed { index, button ->
-            if (index == correctIndex) {
-                button.setBackgroundResource(R.drawable.rightans)
-            } else {
-                button.setBackgroundResource(R.drawable.wrongans)
-            }
-        }
+        // Update button backgrounds
+        updateButtonBackgrounds(correctIndex, selectedIndex)
 
-        // Change the background of the questionBox based on the selected answer
+        // Handle the answer outcome
         if (selectedIndex == correctIndex) {
             questionBox.setBackgroundResource(R.drawable.questionright)
-            correctSound.start()// Correct answer background
+            correctSound.start()
+            loadGif(true)
+            QuizTracker.incrementSolvedQuizzes() // Increment solved quizzes
+            incorrectQuestions.remove(currentQuestionIndex) // Remove from incorrect if answered correctly
+
+            // Update loading bar width
+            updateLoadingBar()
         } else {
             questionBox.setBackgroundResource(R.drawable.questionwrong)
             wrongSound.start()
+            loadGif(false)
+            QuizTracker.incrementWrongAnswers()
+            if (!incorrectQuestions.contains(currentQuestionIndex)) {
+                incorrectQuestions.add(currentQuestionIndex)
+            }
+
         }
 
-        // Lock buttons after an answer is chosen
+        // Lock buttons
         lockButtons()
 
-        // Show the next question button
-        button4new.visibility = View.VISIBLE // Make button4new visible after answering
+        // Hide the GIF and show the next question button after a delay
+        Handler().postDelayed({
+            resultGif.visibility = View.GONE
+
+            // Show button4new after the GIF is hidden
+            Handler().postDelayed({
+                button4new.visibility = View.VISIBLE
+            }, 1000) // 1 second delay for button4new
+        }, 2000) // 2 seconds delay for hiding the GIF
+    }
+
+
+    private fun updateButtonBackgrounds(correctIndex: Int, selectedIndex: Int) {
+        val buttons = listOf(button1, button2, button3)
+        buttons.forEachIndexed { index, button ->
+            button.setBackgroundResource(if (index == correctIndex) R.drawable.rightans else R.drawable.wrongans)
+        }
+    }
+
+
+    private fun loadGif(isCorrect: Boolean) {
+        val gifResId = when (isCorrect) {
+            true -> correctGifs[Random.nextInt(correctGifs.size)]
+            false -> wrongGifs[Random.nextInt(wrongGifs.size)]
+        }
+
+        resultGif.visibility = View.VISIBLE
+        Glide.with(this).load(gifResId).into(resultGif)
     }
 
     private fun lockButtons() {
@@ -121,11 +178,26 @@ class Quiz1 : AppCompatActivity() {
     }
 
     private fun loadNextQuestion() {
-        currentQuestionIndex++
-        if (currentQuestionIndex < quizList.size) {
-            setQuestion()
+        if (incorrectQuestions.isNotEmpty()) {
+            val randomIndex = Random.nextInt(incorrectQuestions.size)
+            currentQuestionIndex = incorrectQuestions[randomIndex]
+            incorrectQuestions.removeAt(randomIndex)
         } else {
-            // Handle quiz completion (optional)
+            currentQuestionIndex++
+            // Check if the quiz is completed
+            if (currentQuestionIndex >= quizList.size) {
+                currentQuestionIndex = 0 // Reset if all questions are answered
+            }
+        }
+
+        // Move this check here to streamline flow
+        if (QuizTracker.solvedQuizzes >= 6) {
+            val intent = Intent(this, test::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            setQuestion()
+            resultGif.visibility = View.GONE
         }
     }
 
@@ -135,4 +207,3 @@ class Quiz1 : AppCompatActivity() {
         super.onDestroy()
     }
 }
-

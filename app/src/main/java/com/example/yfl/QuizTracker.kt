@@ -1,5 +1,3 @@
-package com.example.yfl
-
 object QuizTracker {
     var solvedQuizzes: Int = 0
     var wrongAnswers: Int = 0
@@ -11,5 +9,4 @@ object QuizTracker {
     fun incrementWrongAnswers() {
         wrongAnswers++
     }
-
 }

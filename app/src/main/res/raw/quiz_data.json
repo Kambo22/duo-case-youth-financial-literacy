@@ -47,6 +47,14 @@
         { "text": "B", "isCorrect": false },
         { "text": "C", "isCorrect": true }
       ]
+    },
+    {
+      "question": "Question 7",
+      "answers": [
+        { "text": "A", "isCorrect": false },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": true }
+      ]
     }
   ]
 }
