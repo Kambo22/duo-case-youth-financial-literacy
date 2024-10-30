@@ -6,42 +6,52 @@
     android:padding="16dp">
 
     <!-- Logo at the Top Centered -->
+
+    <!-- Home Title Text -->
+
+    <!-- Level and Quizzes Done Cards Side by Side -->
+
+    <!-- Daily Goals Section -->
+
     <ImageView
         android:id="@+id/appLogo"
-        android:layout_width="179dp"
-        android:layout_height="96dp"
+        android:layout_width="112dp"
+        android:layout_height="125dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:contentDescription="App Logo"
         android:src="@drawable/logo" />
 
-    <!-- Home Title Text -->
     <TextView
         android:id="@+id/homeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appLogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:layout_width="187dp"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="96dp"
+        android:layout_toEndOf="@+id/appLogo"
         android:text="Home"
         android:textColor="#333333"
         android:textSize="48sp"
         android:textStyle="bold" />
 
-    <!-- Level and Quizzes Done Cards Side by Side -->
     <LinearLayout
         android:id="@+id/levelContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_width="395dp"
+        android:layout_height="225dp"
         android:layout_below="@id/homeTitle"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <!-- Level Card -->
         <LinearLayout
-            android:layout_width="24dp"
-            android:layout_height="162dp"
+            android:layout_width="wrap_content"
+            android:layout_height="181dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_card_green"
@@ -53,9 +63,9 @@
                 android:id="@+id/levelText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 Level"
+                android:text="1 Level"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -69,8 +79,8 @@
 
         <!-- Quizzes Done Card -->
         <LinearLayout
-            android:layout_width="5dp"
-            android:layout_height="124dp"
+            android:layout_width="32dp"
+            android:layout_height="137dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_card_orange"
             android:gravity="center"
@@ -95,18 +105,14 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Daily Goals Section with Goals in a Grid -->
-
-    <!-- Solve a Quiz Button -->
-
     <LinearLayout
         android:layout_width="395dp"
-        android:layout_height="214dp"
+        android:layout_height="263dp"
         android:layout_below="@id/levelContainer"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_card_green"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -119,19 +125,20 @@
 
         <!-- Grid of Goals -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_width="350dp"
+            android:layout_height="181dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <!-- Goal Card 1 -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="104dp"
-                android:layout_marginEnd="4dp"
+                android:id="@+id/goal1Card"
+                android:layout_width="21dp"
+                android:layout_height="111dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_card_orange"
+                android:background="@drawable/rounded_card_red"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="8dp">
@@ -155,11 +162,12 @@
 
             <!-- Goal Card 2 -->
             <LinearLayout
-                android:layout_width="40dp"
-                android:layout_height="129dp"
-                android:layout_marginEnd="4dp"
+                android:id="@+id/goal2Card"
+                android:layout_width="100dp"
+                android:layout_height="146dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_edges_lgreen"
+                android:background="@drawable/rounded_card_red"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="8dp">
@@ -183,8 +191,9 @@
 
             <!-- Goal Card 3 -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="103dp"
+                android:id="@+id/goal3Card"
+                android:layout_width="12dp"
+                android:layout_height="109dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_card_red"
                 android:gravity="center"
@@ -212,13 +221,14 @@
 
     <Button
         android:id="@+id/solveQuizButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="382dp"
+        android:layout_height="54dp"
         android:layout_below="@id/levelContainer"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_card_red"
-        android:layout_marginTop="277dp"
-        android:backgroundTint="#FFA726"
+        android:layout_marginTop="354dp"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/rounded_card_orange"
         android:text="Solve a Quiz!"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

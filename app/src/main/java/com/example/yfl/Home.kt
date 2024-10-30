@@ -1,20 +1,123 @@
 package com.example.yfl
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.ContextCompat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Home : AppCompatActivity() {
+
+    private lateinit var levelText: TextView
+    private lateinit var xpText: TextView
+    private lateinit var quizzesDoneText: TextView
+    private lateinit var solveQuizButton: Button
+    private lateinit var goal1Card: LinearLayout
+    private lateinit var goal2Card: LinearLayout
+    private lateinit var goal3Card: LinearLayout
+
+    private var userXP = 0
+    private var userLevel = 1
+    private var quizzesDoneToday = 0
+    private val xpPerQuiz = 10
+    private val dailyQuizLimit = 5
+
+    private val sharedPreferences by lazy {
+        getSharedPreferences("UserProgress", MODE_PRIVATE)
+    }
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        levelText = findViewById(R.id.levelText)
+        xpText = findViewById(R.id.xpText)
+        quizzesDoneText = findViewById(R.id.quizzesDone)
+        solveQuizButton = findViewById(R.id.solveQuizButton)
+        goal1Card = findViewById(R.id.goal1Card)
+        goal2Card = findViewById(R.id.goal2Card)
+        goal3Card = findViewById(R.id.goal3Card)
+
+        loadUserData()
+        updateUI()
+
+
+        solveQuizButton.setOnClickListener { openQuizActivity() }
+
+        checkDailyReset()
+    }
+
+    private fun loadUserData() {
+        userXP = sharedPreferences.getInt("userXP", 0)
+        userLevel = sharedPreferences.getInt("userLevel", 1)
+        quizzesDoneToday = sharedPreferences.getInt("quizzesDoneToday", 0)
+    }
+
+    private fun updateUI() {
+        levelText.text = "$userLevel Level"
+        xpText.text = "$userXP/100 XP"
+        quizzesDoneText.text = "Quizzes done today: $quizzesDoneToday"
+
+        // Update goal card backgrounds based on task status
+        setGoalCardBackground(goal1Card, quizzesDoneToday >= 1)
+        setGoalCardBackground(goal2Card, quizzesDoneToday >= 3)
+        setGoalCardBackground(goal3Card, quizzesDoneToday >= 5)
+    }
+
+    private fun setGoalCardBackground(card: LinearLayout, isComplete: Boolean) {
+        when {
+            isComplete -> card.background = ContextCompat.getDrawable(this, R.drawable.rounded_card_green)
+            quizzesDoneToday > 0 -> card.background = ContextCompat.getDrawable(this, R.drawable.rounded_card_orange)
+            else -> card.background = ContextCompat.getDrawable(this, R.drawable.rounded_card_red)
+        }
+    }
+
+    private fun addXP(xp: Int) {
+        userXP += xp
+        if (userXP >= 100) {
+            userXP -= 100
+            userLevel++
+        }
+        saveUserData()
+        updateUI()
+    }
+
+    private fun saveUserData() {
+        with(sharedPreferences.edit()) {
+            putInt("userXP", userXP)
+            putInt("userLevel", userLevel)
+            putInt("quizzesDoneToday", quizzesDoneToday)
+            apply()
+        }
+    }
+
+    private fun openQuizActivity() {
+        val intent = Intent(this, QuizzTopics::class.java)
+        startActivity(intent)
+        // Simulate completion of a quiz and add XP
+        quizzesDoneToday++
+        addXP(xpPerQuiz)
+        saveUserData()
+        updateUI()
+    }
+
+
+    private fun checkDailyReset() {
+        val lastReset = sharedPreferences.getLong("lastReset", 0L)
+        val currentDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date())
+
+        // If the date has changed since the last reset, reset the daily progress
+        if (lastReset != currentDate.toLong()) {
+            quizzesDoneToday = 0
+            sharedPreferences.edit().putInt("quizzesDoneToday", quizzesDoneToday).apply()
+            sharedPreferences.edit().putLong("lastReset", currentDate.toLong()).apply()
+            updateUI()
         }
     }
 }

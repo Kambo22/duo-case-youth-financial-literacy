@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         val processedPassword = password.replace("\\s".toRegex(), "")
 
         if (username == "admin" && processedPassword == "123") {
-            val intent = Intent(this, QuizzTopics::class.java)
+            val intent = Intent(this, Home::class.java) // Change this to HomeActivity
             startActivity(intent)
             finish()
         } else {
