@@ -1,5 +1,6 @@
 package com.example.yfl
 
+import QuizTracker
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -169,6 +170,7 @@ class Quiz1 : AppCompatActivity() {
             wrongSound.start()
             loadGif(false)
             QuizTracker.incrementWrongAnswers()
+            QuizTracker.incrementDailyWrongAnswers()
             if (!incorrectQuestions.contains(currentQuestionIndex)) {
                 incorrectQuestions.add(currentQuestionIndex)
             }
@@ -244,6 +246,9 @@ class Quiz1 : AppCompatActivity() {
         // Check if the user has reached 6 solved quizzes
         if (QuizTracker.solvedQuizzes >= 6) {
             QuizTracker.addXp(30) // Add 30 XP here
+            QuizTracker.addFullXP(30)
+            QuizTracker.incrementSolvedTopics()
+            QuizTracker.incrementsolved()
             val intent = Intent(this, results::class.java)
             startActivity(intent)
             finish()
