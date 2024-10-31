@@ -228,9 +228,10 @@ class Quiz1 : AppCompatActivity() {
             }
         }
 
-        // Move this check here to streamline flow
+        // Check if the user has reached 6 solved quizzes
         if (QuizTracker.solvedQuizzes >= 6) {
-            val intent = Intent(this, test::class.java)
+            QuizTracker.addXp(30) // Add 30 XP here
+            val intent = Intent(this, results::class.java)
             startActivity(intent)
             finish()
         } else {
@@ -238,6 +239,8 @@ class Quiz1 : AppCompatActivity() {
             resultGif.visibility = View.GONE
         }
     }
+
+
 
     override fun onDestroy() {
         correctSound.release()
