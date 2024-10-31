@@ -102,6 +102,6 @@ class results : AppCompatActivity() {
 
         // Display gained XP in result2
         val xpTextView = findViewById<TextView>(R.id.result2)
-        xpTextView.text = "+ ${QuizTracker.gainedXp}" // Change to gained XP
+        xpTextView.text = "+ ${QuizTracker.XPDisplay}" // Change to gained XP
     }
 }

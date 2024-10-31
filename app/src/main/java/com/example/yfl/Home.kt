@@ -1,12 +1,10 @@
 package com.example.yfl
 
 import QuizTracker.DailyGoalsWrong
-import QuizTracker.FullXP
+import QuizTracker.Solved
 import QuizTracker.SolvedTopics
 import QuizTracker.gainedXp
 import QuizTracker.level
-import QuizTracker.solved
-import QuizTracker.solvedQuizzes
 import QuizTracker.xp
 import QuizTracker.xpPerLevel
 import android.annotation.SuppressLint
@@ -34,7 +32,6 @@ class Home : AppCompatActivity() {
     private lateinit var goal1Card: LinearLayout
     private lateinit var goal2Card: LinearLayout
     private lateinit var goal3Card: LinearLayout
-
 
     private var quizzesDoneToday = 0
 
@@ -82,20 +79,15 @@ class Home : AppCompatActivity() {
 
     private fun updateUI() {
         levelText.text = "$level Level"
-        xpText.text = "$FullXP/$xpPerLevel Xp"
-        quizzesDoneText.text = "$quizzesDoneToday"
+        xpText.text = "$gainedXp/$xpPerLevel Xp"
+        quizzesDoneText.text = "$Solved"
         solve.text= "$SolvedTopics/1"
-        solvequizzes.text = "$solved/3"
+        solvequizzes.text = "$Solved/3"
         mistakes.text = "$DailyGoalsWrong"
 
 
 
     }
-
-
-
-
-
 
     private fun saveUserData() {
         with(sharedPreferences.edit()) {
@@ -109,7 +101,6 @@ class Home : AppCompatActivity() {
     private fun openQuizActivity() {
         val intent = Intent(this, QuizzTopics::class.java)
         startActivity(intent)
-        quizzesDoneToday++
         saveUserData()
         updateUI()
     }
