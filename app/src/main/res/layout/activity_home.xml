@@ -90,10 +90,10 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/quizzesDone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quizzes done today:"
+                android:textAlignment="center"
                 android:textColor="#595959"
                 android:textSize="16sp" />
 
@@ -101,6 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:id="@+id/quizzesDone"
                 android:textColor="#595959"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -158,6 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2/3"
+                    android:id="@+id/solvequizzes"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -187,6 +189,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5/5"
+                    android:id="@+id/mistakes"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -207,6 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Solve one topic"
+
                     android:textAlignment="center"
                     android:textColor="#595959"
                     android:textSize="14sp" />
@@ -215,6 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0/1"
+                    android:id="@+id/solve"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />

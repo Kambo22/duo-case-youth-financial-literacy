@@ -4,13 +4,22 @@ object QuizTracker {
     var level: Int = 1
     var xp: Int = 0
     var gainedXp: Int = 0 // New property to track gained XP
-    private val xpPerLevel: Int = 30
+    val xpPerLevel: Int = 60
     var DailyGoalsWrong: Int = 0
     var SolvedTopics: Int = 0
+    var FullXP: Int = 0
 
     fun incrementSolvedQuizzes() {
         solvedQuizzes++
         checkLevelUp()
+    }
+
+    fun addFullXP(amount: Int) {
+        xp += amount
+        FullXP += amount
+        if (FullXP >= xpPerLevel) {
+            FullXP = 0
+        }
     }
 
     fun incrementWrongAnswers() {
