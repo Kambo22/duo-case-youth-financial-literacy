@@ -16,6 +16,9 @@
             android:name=".Results2"
             android:exported="false" />
         <activity
+            android:name=".Home"
+            android:exported="true"/>
+        <activity
             android:name=".BudgetTopic"
             android:exported="false" />
         <activity
