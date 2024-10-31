@@ -1,0 +1,85 @@
+{
+  "quiz": [
+    {
+      "question": "What is an essential first step in creating a budget?",
+      "answerDescription": "A - List all sources of income, B - Only consider your fixed expenses, C - Estimate your expenses randomly",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "How can you categorize your expenses effectively?",
+      "answerDescription": "A - Divide them into needs and wants, B - Write them down without categories, C - Only track monthly expenses",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What is a good strategy for managing variable expenses like groceries?",
+      "answerDescription": "A - Set a flexible budget based on previous months, B - Ignore your spending habits, C - Spend as much as you want",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "How often should you review your budget?",
+      "answerDescription": "A - Monthly, B - Once a year, C - Never review it",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What is a good practice for adjusting your budget?",
+      "answerDescription": "A - Analyze your spending and adjust categories as needed, B - Stick to the initial budget no matter what, C - Only adjust if you overspend",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "How can setting savings goals help with budgeting?",
+      "answerDescription": "A - Provides motivation to stick to your budget, B - It doesn't affect your budget, C - It complicates budgeting",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What should you do if you find yourself consistently overspending?",
+      "answerDescription": "A - Reassess your budget and spending habits, B - Ignore the overspending, C - Increase your expenses without changes",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "Why is it important to account for irregular expenses in your budget?",
+      "answerDescription": "A - To avoid surprises and ensure you have funds available, B - Irregular expenses aren't important, C - You should only budget for monthly bills",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What tool can help you track your budget effectively?",
+      "answerDescription": "A - A budgeting app or software, B - Only paper and pen, C - No tools are needed",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    }
+  ]
+}

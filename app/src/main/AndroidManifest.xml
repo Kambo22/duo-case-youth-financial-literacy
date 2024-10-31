@@ -13,7 +13,13 @@
         android:theme="@style/Theme.YFL"
         tools:targetApi="31">
         <activity
-            android:name=".Home"
+            android:name=".Results2"
+            android:exported="false" />
+        <activity
+            android:name=".BudgetTopic"
+            android:exported="false" />
+        <activity
+            android:name=".results"
             android:exported="false" />
         <activity
             android:name=".Quiz2"

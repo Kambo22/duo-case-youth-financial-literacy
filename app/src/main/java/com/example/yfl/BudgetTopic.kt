@@ -5,44 +5,36 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import android.view.animation.AnimationUtils
 
-
-class QuizzTopics : AppCompatActivity() {
+class BudgetTopic : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_quizz_topics)
+        setContentView(R.layout.activity_budget_topic)
 
-        // Load the animation
         val floatAnimation = AnimationUtils.loadAnimation(this, R.anim.float_animation)
 
-        // Find the views and start the animation
         findViewById<View>(R.id.Topic1).startAnimation(floatAnimation)
-        findViewById<View>(R.id.Topic2).startAnimation(floatAnimation)
 
         findViewById<View>(R.id.insideText1).startAnimation(floatAnimation)
-        findViewById<View>(R.id.insideText2).startAnimation(floatAnimation)
 
-        // Find the views and start the animation
-        val topic1 = findViewById<View>(R.id.Topic1)
-        val topic2 = findViewById<View>(R.id.Topic2)
+        val btn = findViewById<View>(R.id.topicButton)
 
         val returnButton = findViewById<View>(R.id.returnBTN)
 
         returnButton.setOnClickListener {
-            val intent = Intent(this, Home::class.java)
+            val intent = Intent(this, QuizzTopics::class.java)
             startActivity(intent)
         }
 
-        topic1.setOnClickListener {
-            val intent = Intent(this, SavingTIps::class.java)
+        btn.setOnClickListener {
+            val intent = Intent(this, Quiz2::class.java)
             startActivity(intent)
         }
 
-        topic2.setOnClickListener {
-            val intent = Intent(this, BudgetTopic::class.java)
-            startActivity(intent)
-        }
+
     }
 }

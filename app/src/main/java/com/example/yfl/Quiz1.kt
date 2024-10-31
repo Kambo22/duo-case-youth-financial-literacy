@@ -12,6 +12,7 @@ import android.media.MediaPlayer
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import android.os.Handler
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import kotlin.random.Random
 import androidx.appcompat.app.AlertDialog
@@ -39,6 +40,15 @@ class Quiz1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz1)
+
+
+        val floatAnimation = AnimationUtils.loadAnimation(this, R.anim.float_animation)
+
+        // Find the views and start the animation
+        findViewById<View>(R.id.Question1).startAnimation(floatAnimation)
+
+        findViewById<View>(R.id.QuestionDesc).startAnimation(floatAnimation)
+        findViewById<View>(R.id.QuestionAns).startAnimation(floatAnimation)
 
         correctSound = MediaPlayer.create(this, R.raw.kaching)
         wrongSound = MediaPlayer.create(this, R.raw.wrong)
@@ -107,6 +117,9 @@ class Quiz1 : AppCompatActivity() {
         button1.text = question.answers[0].text
         button2.text = question.answers[1].text
         button3.text = question.answers[2].text
+
+        val answerDescription = question.answerDescription.replace(", ", "\n") // Replace commas with new lines
+        findViewById<TextView>(R.id.QuestionAns).text = answerDescription
 
         // Reset button states and hide button4new
         resetButtonStates()
@@ -228,9 +241,10 @@ class Quiz1 : AppCompatActivity() {
             }
         }
 
-        // Move this check here to streamline flow
+        // Check if the user has reached 6 solved quizzes
         if (QuizTracker.solvedQuizzes >= 6) {
-            val intent = Intent(this, test::class.java)
+            QuizTracker.addXp(30) // Add 30 XP here
+            val intent = Intent(this, results::class.java)
             startActivity(intent)
             finish()
         } else {
@@ -238,6 +252,8 @@ class Quiz1 : AppCompatActivity() {
             resultGif.visibility = View.GONE
         }
     }
+
+
 
     override fun onDestroy() {
         correctSound.release()
