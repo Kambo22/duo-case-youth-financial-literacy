@@ -1,5 +1,6 @@
 object QuizTracker {
     var solvedQuizzes: Int = 0
+    var solved: Int = 0
     var wrongAnswers: Int = 0
     var level: Int = 1
     var xp: Int = 0
@@ -12,6 +13,10 @@ object QuizTracker {
     fun incrementSolvedQuizzes() {
         solvedQuizzes++
         checkLevelUp()
+    }
+
+    fun incrementsolved() {
+        solved++
     }
 
     fun addFullXP(amount: Int) {

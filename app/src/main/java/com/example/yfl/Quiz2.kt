@@ -244,8 +244,10 @@ class Quiz2 : AppCompatActivity() {
 
         // Check if the user has reached 6 solved quizzes
         if (QuizTracker.solvedQuizzes >= 6) {
-            QuizTracker.addXp(30) // Add 30 XP here
+            QuizTracker.addXp(30)
+            QuizTracker.addFullXP(30)
             incrementSolvedTopics()
+            QuizTracker.incrementsolved()
             val intent = Intent(this, Results2::class.java)
             startActivity(intent)
             finish()

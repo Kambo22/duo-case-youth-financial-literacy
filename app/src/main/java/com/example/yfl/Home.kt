@@ -1,13 +1,19 @@
 package com.example.yfl
 
+import QuizTracker.DailyGoalsWrong
 import QuizTracker.FullXP
+import QuizTracker.SolvedTopics
 import QuizTracker.gainedXp
 import QuizTracker.level
+import QuizTracker.solved
+import QuizTracker.solvedQuizzes
 import QuizTracker.xp
 import QuizTracker.xpPerLevel
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -18,6 +24,9 @@ import java.util.*
 
 class Home : AppCompatActivity() {
 
+    private lateinit var solve: TextView
+    private lateinit var solvequizzes: TextView
+    private lateinit var mistakes: TextView
     private lateinit var levelText: TextView
     private lateinit var xpText: TextView
     private lateinit var quizzesDoneText: TextView
@@ -36,11 +45,20 @@ class Home : AppCompatActivity() {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
+        val floatAnimation = AnimationUtils.loadAnimation(this, R.anim.float_animation)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        findViewById<View>(R.id.DailyGoals).startAnimation(floatAnimation)
+        findViewById<View>(R.id.levelScreen).startAnimation(floatAnimation)
+        findViewById<View>(R.id.Dailyquiz).startAnimation(floatAnimation)
+
+
         levelText = findViewById(R.id.levelText)
         xpText = findViewById(R.id.xpText)
+        solve = findViewById(R.id.solve)
+        mistakes = findViewById(R.id.mistakes)
+        solvequizzes = findViewById(R.id.solvequizzes)
         quizzesDoneText = findViewById(R.id.quizzesDone)
         solveQuizButton = findViewById(R.id.solveQuizButton)
         goal1Card = findViewById(R.id.goal1Card)
@@ -66,20 +84,17 @@ class Home : AppCompatActivity() {
         levelText.text = "$level Level"
         xpText.text = "$FullXP/$xpPerLevel Xp"
         quizzesDoneText.text = "$quizzesDoneToday"
+        solve.text= "$SolvedTopics/1"
+        solvequizzes.text = "$solved/3"
+        mistakes.text = "$DailyGoalsWrong"
 
-        // Update goal card backgrounds based on task status
-        setGoalCardBackground(goal1Card, quizzesDoneToday >= 1)
-        setGoalCardBackground(goal2Card, quizzesDoneToday >= 3)
-        setGoalCardBackground(goal3Card, quizzesDoneToday >= 5)
+
+
     }
 
-    private fun setGoalCardBackground(card: LinearLayout, isComplete: Boolean) {
-        when {
-            isComplete -> card.background = ContextCompat.getDrawable(this, R.drawable.rounded_card_green)
-            quizzesDoneToday > 0 -> card.background = ContextCompat.getDrawable(this, R.drawable.rounded_card_orange)
-            else -> card.background = ContextCompat.getDrawable(this, R.drawable.rounded_card_red)
-        }
-    }
+
+
+
 
 
     private fun saveUserData() {
