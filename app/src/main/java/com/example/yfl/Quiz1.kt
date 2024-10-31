@@ -108,6 +108,9 @@ class Quiz1 : AppCompatActivity() {
         button2.text = question.answers[1].text
         button3.text = question.answers[2].text
 
+        val answerDescription = question.answerDescription.replace(", ", "\n") // Replace commas with new lines
+        findViewById<TextView>(R.id.QuestionAns).text = answerDescription
+
         // Reset button states and hide button4new
         resetButtonStates()
     }

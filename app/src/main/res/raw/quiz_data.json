@@ -1,7 +1,8 @@
 {
   "quiz": [
     {
-      "question": "Question 1",
+      "question": "What is a good practice for saving money on groceries?",
+      "answerDescription": "A - Create a shopping list, B - Buy everything on sale, C - Shop when hungry",
       "answers": [
         { "text": "A", "isCorrect": true },
         { "text": "B", "isCorrect": false },
@@ -9,23 +10,8 @@
       ]
     },
     {
-      "question": "Question 2",
-      "answers": [
-        { "text": "A", "isCorrect": false },
-        { "text": "B", "isCorrect": true },
-        { "text": "C", "isCorrect": false }
-      ]
-    },
-    {
-      "question": "Question 3",
-      "answers": [
-        { "text": "A", "isCorrect": false },
-        { "text": "B", "isCorrect": false },
-        { "text": "C", "isCorrect": true }
-      ]
-    },
-    {
-      "question": "Question 4",
+      "question": "How can you effectively save for a vacation?",
+      "answerDescription": "A - Save small amounts regularly, B - Wait until the last minute, C - Use a credit card",
       "answers": [
         { "text": "A", "isCorrect": true },
         { "text": "B", "isCorrect": false },
@@ -33,7 +19,8 @@
       ]
     },
     {
-      "question": "Question 5",
+      "question": "What is a recommended method to save on utility bills?",
+      "answerDescription": "A - Keep lights on in empty rooms, B - Use energy-efficient appliances, C - Ignore the bills",
       "answers": [
         { "text": "A", "isCorrect": false },
         { "text": "B", "isCorrect": true },
@@ -41,19 +28,66 @@
       ]
     },
     {
-      "question": "Question 6",
+      "question": "Which of the following is a smart saving strategy?",
+      "answerDescription": "A - Set up an automatic transfer to savings, B - Spend all your paycheck, C - Only save when you have extra money",
       "answers": [
-        { "text": "A", "isCorrect": false },
+        { "text": "A", "isCorrect": true },
         { "text": "B", "isCorrect": false },
-        { "text": "C", "isCorrect": true }
+        { "text": "C", "isCorrect": false }
       ]
     },
     {
-      "question": "Question 7",
+      "question": "What should you consider when creating a budget?",
+      "answerDescription": "A - All income and expenses, B - Only fixed expenses, C - Just expenses",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "How can you save money on dining out?",
+      "answerDescription": "A - Always order the most expensive item, B - Use coupons or discounts, C - Never look at the menu prices",
       "answers": [
         { "text": "A", "isCorrect": false },
+        { "text": "B", "isCorrect": true },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What is one way to avoid impulse purchases?",
+      "answerDescription": "A - Make a list before shopping, B - Go shopping without a plan, C - Buy things that are on display",
+      "answers": [
+        { "text": "A", "isCorrect": true },
         { "text": "B", "isCorrect": false },
-        { "text": "C", "isCorrect": true }
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What is a good way to save on transportation costs?",
+      "answerDescription": "A - Use public transportation or bike, B - Always drive, C - Take taxis frequently",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What is a practical way to save on entertainment expenses?",
+      "answerDescription": "A - Go to every event, B - Look for free or low-cost activities, C - Only stay home",
+      "answers": [
+        { "text": "A", "isCorrect": false },
+        { "text": "B", "isCorrect": true },
+        { "text": "C", "isCorrect": false }
+      ]
+    },
+    {
+      "question": "What should you do to keep track of your spending?",
+      "answerDescription": "A - Use a budgeting app or spreadsheet, B - Keep all receipts without reviewing them, C - Forget about tracking expenses",
+      "answers": [
+        { "text": "A", "isCorrect": true },
+        { "text": "B", "isCorrect": false },
+        { "text": "C", "isCorrect": false }
       ]
     }
   ]

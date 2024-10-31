@@ -8,7 +8,8 @@ data class Quiz(
 
 data class Question(
     val question: String,
-    val answers: List<Answer>
+    val answers: List<Answer>,
+    val answerDescription: String
 )
 
 
