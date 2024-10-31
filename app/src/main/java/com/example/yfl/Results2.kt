@@ -13,20 +13,17 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class results : AppCompatActivity() {
+class Results2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_results)
+        setContentView(R.layout.activity_results2)
 
         val floatAnimation = AnimationUtils.loadAnimation(this, R.anim.float_animation)
 
-        // Start animation on ResultSection1
         findViewById<View>(R.id.Result1).startAnimation(floatAnimation)
         findViewById<View>(R.id.Result2).startAnimation(floatAnimation)
         findViewById<View>(R.id.Result3).startAnimation(floatAnimation)
-
-
 
         // Display wrong answers in result1
         val wrongAnswersTextView = findViewById<TextView>(R.id.result1)
@@ -43,7 +40,7 @@ class results : AppCompatActivity() {
                     QuizTracker.resetCounters() // Add this method in QuizTracker class
 
                     // Navigate to the home page
-                    val intent = Intent(this, SavingTIps::class.java) // Replace HomeActivity with your actual home page class
+                    val intent = Intent(this, BudgetTopic::class.java) // Replace HomeActivity with your actual home page class
                     startActivity(intent)
                     finish() // Optionally finish the current activity
                     dialog.dismiss()
@@ -62,7 +59,7 @@ class results : AppCompatActivity() {
             QuizTracker.resetCounters() // Reset the counters
 
             // Create an Intent to start the Quiz1 activity
-            val intent = Intent(this, Quiz1::class.java)
+            val intent = Intent(this, Quiz2::class.java)
             startActivity(intent) // Start Quiz1 activity
             finish() // Close the results activity
         }

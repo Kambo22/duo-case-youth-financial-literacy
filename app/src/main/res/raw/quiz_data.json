@@ -28,24 +28,6 @@
       ]
     },
     {
-      "question": "Which of the following is a smart saving strategy?",
-      "answerDescription": "A - Set up an automatic transfer to savings, B - Spend all your paycheck, C - Only save when you have extra money",
-      "answers": [
-        { "text": "A", "isCorrect": true },
-        { "text": "B", "isCorrect": false },
-        { "text": "C", "isCorrect": false }
-      ]
-    },
-    {
-      "question": "What should you consider when creating a budget?",
-      "answerDescription": "A - All income and expenses, B - Only fixed expenses, C - Just expenses",
-      "answers": [
-        { "text": "A", "isCorrect": true },
-        { "text": "B", "isCorrect": false },
-        { "text": "C", "isCorrect": false }
-      ]
-    },
-    {
       "question": "How can you save money on dining out?",
       "answerDescription": "A - Always order the most expensive item, B - Use coupons or discounts, C - Never look at the menu prices",
       "answers": [
