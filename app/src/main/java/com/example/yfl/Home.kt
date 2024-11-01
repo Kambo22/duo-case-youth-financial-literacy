@@ -35,7 +35,6 @@ class Home : AppCompatActivity() {
 
     private var quizzesDoneToday = 0
 
-
     private val sharedPreferences by lazy {
         getSharedPreferences("UserProgress", MODE_PRIVATE)
     }
@@ -50,7 +49,6 @@ class Home : AppCompatActivity() {
         findViewById<View>(R.id.levelScreen).startAnimation(floatAnimation)
         findViewById<View>(R.id.Dailyquiz).startAnimation(floatAnimation)
 
-
         levelText = findViewById(R.id.levelText)
         xpText = findViewById(R.id.xpText)
         solve = findViewById(R.id.solve)
@@ -64,7 +62,6 @@ class Home : AppCompatActivity() {
 
         loadUserData()
         updateUI()
-
 
         solveQuizButton.setOnClickListener { openQuizActivity() }
 
@@ -81,12 +78,32 @@ class Home : AppCompatActivity() {
         levelText.text = "$level Level"
         xpText.text = "$gainedXp/$xpPerLevel Xp"
         quizzesDoneText.text = "$Solved"
-        solve.text= "$SolvedTopics/1"
+        solve.text = "$SolvedTopics/1"
         solvequizzes.text = "$Solved/3"
         mistakes.text = "$DailyGoalsWrong"
 
+        updateGoalCardBackgrounds()
+    }
+
+    private fun updateGoalCardBackgrounds() {
+
+        when {
+            Solved == 0 -> goal1Card.setBackgroundResource(R.drawable.rounded_card_orange)
+            Solved in 1..2 -> goal1Card.setBackgroundResource(R.drawable.rounded_card_blue)
+            Solved >= 3 -> goal1Card.setBackgroundResource(R.drawable.rounded_edges_lgreen)
+        }
 
 
+        when {
+            DailyGoalsWrong <= 5 -> goal2Card.setBackgroundResource(R.drawable.rounded_edges_lgreen)
+            DailyGoalsWrong > 5 -> goal2Card.setBackgroundResource(R.drawable.rounded_card_orange)
+        }
+
+
+        when {
+            SolvedTopics == 0 -> goal3Card.setBackgroundResource(R.drawable.rounded_card_orange)
+            SolvedTopics >= 1 -> goal3Card.setBackgroundResource(R.drawable.rounded_edges_lgreen)
+        }
     }
 
     private fun saveUserData() {
@@ -105,15 +122,13 @@ class Home : AppCompatActivity() {
         updateUI()
     }
 
-
     private fun checkDailyReset() {
         val lastReset = sharedPreferences.getLong("lastReset", 0L)
         val currentDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date())
 
-        // If the date has changed since the last reset, reset the daily progress
         if (lastReset != currentDate.toLong()) {
             quizzesDoneToday = 0
-            sharedPreferences.edit().putInt("", quizzesDoneToday).apply()
+            sharedPreferences.edit().putInt("quizzesDoneToday", quizzesDoneToday).apply()
             sharedPreferences.edit().putLong("lastReset", currentDate.toLong()).apply()
             updateUI()
         }
