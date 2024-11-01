@@ -20,20 +20,22 @@
             android:src="@drawable/logo" />
 
         <!-- Home Title Text -->
+
+        <!-- Level and Quizzes Done Cards Side by Side -->
+
         <TextView
             android:id="@+id/homeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="41dp"
             android:layout_toEndOf="@id/appLogo"
             android:text="Home"
             android:textColor="#595959"
             android:textSize="48sp"
             android:textStyle="bold" />
 
-        <!-- Level and Quizzes Done Cards Side by Side -->
         <LinearLayout
             android:id="@+id/levelContainer"
             android:layout_width="match_parent"
