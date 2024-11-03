@@ -17,9 +17,9 @@
             android:id="@+id/logoHeadlineSection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <!-- Logo on the left -->
             <ImageView
@@ -28,11 +28,11 @@
                 android:layout_height="111dp"
                 android:contentDescription="Logo Placeholder"
                 android:src="@drawable/logo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/headline"
@@ -42,23 +42,23 @@
                 android:textColor="@color/text"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/logo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logo" />
 
             <ImageButton
                 android:id="@+id/returnBTN"
                 android:layout_width="48dp"
-                android:layout_marginStart="16dp"
                 android:layout_height="48dp"
                 android:background="@drawable/returnbutton"
                 android:contentDescription="Image Button Placeholder"
                 android:src="@drawable/returnarrow"
+                app:layout_constraintBottom_toBottomOf="@+id/logo"
+                app:layout_constraintEnd_toStartOf="@+id/logo"
+                app:layout_constraintHorizontal_bias="0.058"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/headline"
-                app:layout_constraintBottom_toBottomOf="@id/headline"
-                app:layout_constraintEnd_toStartOf="@id/logo"
-                app:layout_constraintHorizontal_bias="0.02" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.158" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
